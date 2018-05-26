@@ -4,6 +4,7 @@ public class Prode {
 
 	private Integer totalScore = 0;
 	private HashMap<Integer,Match> matches;
+	String champion;
 
 	public Prode() {
 		this.matches = new HashMap<>();
@@ -55,7 +56,7 @@ public class Prode {
 				break;
 			case 1:
 				if (t1Guessed) {
-					totalScore += 20;
+					totalScore += 16;
 				}
 				break;
 			default:
@@ -67,5 +68,15 @@ public class Prode {
 
 	public Integer getTotalScore() {
 		return totalScore;
+	}
+
+	public void compareChampion(String realChamp) {
+		if( this.champion.equals(realChamp)) {
+			totalScore += 20;
+		}
+	}
+
+	public void addMatch(Match m) {
+		this.matches.put(m.getMatchNumber(),m);
 	}
 }

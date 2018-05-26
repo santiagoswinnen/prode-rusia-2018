@@ -27,7 +27,7 @@ public class Match {
 		} else if (t2Goals > t1Goals) {
 			return t2;
 		}
-		return "Tie";
+		return "Empate";
 	}
 
 	public String getT1() {
@@ -52,5 +52,9 @@ public class Match {
 
 	public Integer getRoundOf() {
 		return roundOf;
+	}
+
+	public void printMatch() {
+		System.out.println(t1 + " " + t1Goals + " " + t2Goals + " " + t2);
 	}
 }
