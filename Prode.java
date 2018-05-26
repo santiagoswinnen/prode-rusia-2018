@@ -4,7 +4,9 @@ public class Prode {
 
 	private Integer totalScore = 0;
 	private HashMap<Integer,Match> matches;
-	String champion;
+	private String champion;
+	private String third;
+
 
 	public Prode() {
 		this.matches = new HashMap<>();
@@ -54,11 +56,6 @@ public class Prode {
 					totalScore += 8;
 				}
 				break;
-			case 1:
-				if (t1Guessed) {
-					totalScore += 16;
-				}
-				break;
 			default:
 				if (prodeMatch.getWinner().equals(realMatch.getWinner())) {
 					totalScore += 1;
@@ -70,13 +67,49 @@ public class Prode {
 		return totalScore;
 	}
 
-	public void compareChampion(String realChamp) {
+	public HashMap<Integer, Match> getMatches() {
+		return matches;
+	}
+
+	public void setChampion(String champion) {
+		this.champion = champion;
+	}
+
+	public void setThird(String third) {
+		this.third = third;
+	}
+
+	public String getChampion() {
+		return champion;
+	}
+
+	public String getThird() {
+		return third;
+	}
+
+	public void updateScoreForChampion(String realChamp) {
 		if( this.champion.equals(realChamp)) {
+			totalScore += 20;
+		}
+	}
+
+	public void updateScoreForThird(String realThird) {
+		if( this.champion.equals(realThird)) {
 			totalScore += 20;
 		}
 	}
 
 	public void addMatch(Match m) {
 		this.matches.put(m.getMatchNumber(),m);
+	}
+
+	public void print() {
+		for(Integer i: matches.keySet()) {
+			matches.get(i).printMatch();
+		}
+		System.out.println("");
+		System.out.println("Tercero: " + third);
+		System.out.println("Campeon: " + champion);
+
 	}
 }
